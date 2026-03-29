@@ -18,7 +18,7 @@ public class AccountController {
         this.accountUseCase = accountUseCase;
     }
 
-    @PostMapping("/")
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<AccountResponseDTO> createAccount(
         @Valid
