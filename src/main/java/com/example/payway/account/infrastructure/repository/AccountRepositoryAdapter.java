@@ -2,9 +2,8 @@ package com.example.payway.account.infrastructure.repository;
 
 import com.example.payway.account.domain.ports.AccountRepository;
 import com.example.payway.account.domain.vo.AccountVO;
-import com.example.payway.account.infrastructure.mapper.AccountMapper;
 import com.example.payway.account.infrastructure.entity.AccountEntity;
-import com.example.payway.common.exception.NotFoundException;
+import com.example.payway.account.infrastructure.mapper.AccountMapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
@@ -26,7 +25,7 @@ public class AccountRepositoryAdapter implements AccountRepository {
     }
 
     @Override
-    public Optional<AccountVO> getByDocumentNumber(String documentNumber) throws NotFoundException {
+    public Optional<AccountVO> getByDocumentNumber(String documentNumber) {
         return entityRepository.getByDocumentNumber(documentNumber);
     }
 

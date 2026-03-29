@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 
 public interface AccountEntityRepository extends JpaRepository<AccountEntity, Long> {
-				Optional<AccountVO> getByDocumentNumber(String documentNumber);
-				Boolean existsByDocumentNumber(String documentNumber);
+  Optional<AccountVO> getByDocumentNumber(String documentNumber);
+  Boolean existsByDocumentNumber(String documentNumber);
 }
