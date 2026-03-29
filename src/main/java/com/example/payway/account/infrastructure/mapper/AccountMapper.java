@@ -6,8 +6,8 @@ import com.example.payway.account.infrastructure.entity.AccountEntity;
 public class AccountMapper {
     public static AccountVO toDomain(AccountEntity accountEntity) {
         return new AccountVO(
-                accountEntity.getId(),
-                accountEntity.getDocumentNumber()
+          accountEntity.getId(),
+          accountEntity.getDocumentNumber()
         );
     }
 
