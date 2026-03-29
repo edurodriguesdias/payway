@@ -4,8 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-@Setter
 @Getter
+@Setter
 @Entity
 @Table(name = "accounts")
 public class AccountEntity {
@@ -21,19 +21,19 @@ public class AccountEntity {
         this.documentNumber = documentNumber;
     }
 
+		public void setId(Long id) {
+        this.id = id;
+    }
+
+		public void setDocumentNumber(String documentNumber) {
+        this.documentNumber = documentNumber;
+    }
+
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getDocumentNumber() {
         return documentNumber;
-    }
-
-    public void setDocumentNumber(String documentNumber) {
-        this.documentNumber = documentNumber;
     }
 }

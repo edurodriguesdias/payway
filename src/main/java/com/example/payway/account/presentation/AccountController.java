@@ -1,8 +1,8 @@
 package com.example.payway.account.presentation;
 
-import com.example.payway.account.domain.useCase.AccountUseCase;
-import com.example.payway.account.presentation.dto.CreateAccountRequestDTO;
+import com.example.payway.account.domain.usecases.AccountUseCase;
 import com.example.payway.account.presentation.dto.AccountResponseDTO;
+import com.example.payway.account.presentation.dto.CreateAccountRequestDTO;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,25 +18,25 @@ public class AccountController {
         this.accountUseCase = accountUseCase;
     }
 
-    @PostMapping
+    @PostMapping("/")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<AccountResponseDTO> createAccount(
-            @Valid
-            @RequestBody CreateAccountRequestDTO request
+        @Valid
+        @RequestBody CreateAccountRequestDTO request
     ) {
         var account = this.accountUseCase.createAccount(request.toVO());
 
         return ResponseEntity.ok(
-                AccountResponseDTO.build(
-                        account.id(),
-                        request.documentNumber()
-                )
+            AccountResponseDTO.build(
+                account.id(),
+                request.documentNumber()
+            )
         );
     }
 
     @GetMapping("/{documentNumber}")
     public ResponseEntity<AccountResponseDTO> getAccountByDocumentNumber(
-            @PathVariable String documentNumber
+        @PathVariable String documentNumber
     ) {
         var account = this.accountUseCase.getAccount(documentNumber);
 

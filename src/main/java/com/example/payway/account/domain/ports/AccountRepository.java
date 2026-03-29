@@ -7,4 +7,5 @@ import java.util.Optional;
 public interface AccountRepository {
     AccountVO create(String documentNumber);
     Optional<AccountVO> getByDocumentNumber(String documentNumber);
+    Boolean isDocumentAlreadyExists(String documentNumber);
 }

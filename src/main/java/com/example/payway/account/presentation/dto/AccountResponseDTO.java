@@ -9,11 +9,10 @@ public record AccountResponseDTO(
         @JsonProperty("document_number")
         String documentNumber
 ) {
-
     public static AccountResponseDTO build(Long id, String documentNumber) {
         return new AccountResponseDTO(
-                id,
-                documentNumber
+            id,
+            documentNumber
         );
     }
 }

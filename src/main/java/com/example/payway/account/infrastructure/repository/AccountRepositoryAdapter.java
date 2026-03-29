@@ -30,4 +30,8 @@ public class AccountRepositoryAdapter implements AccountRepository {
         return entityRepository.getByDocumentNumber(documentNumber);
     }
 
+    @Override
+    public Boolean isDocumentAlreadyExists(String documentNumber) {
+        return entityRepository.existsByDocumentNumber(documentNumber);
+    }
 }
