@@ -1,5 +1,6 @@
 package com.example.payway.transaction.presentation.dto;
 
+import com.example.payway.transaction.domain.vo.OperationTypeEnum;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -11,8 +12,8 @@ public record TransactionResponseDTO(
     Long id,
     @JsonProperty("account_id")
     Long accountId,
-    @JsonProperty("operation_type_id")
-    Integer operationTypeId,
+    @JsonProperty("operation")
+    OperationResponseDTO operation,
     BigDecimal amount,
     @JsonProperty("event_date")
     LocalDateTime eventDate
@@ -24,10 +25,16 @@ public record TransactionResponseDTO(
         BigDecimal amount,
         LocalDateTime eventDate
     ) {
+        var operationType = OperationTypeEnum.fromId(operationTypeId);
+        var operationResponse = new OperationResponseDTO(
+            operationType.getId(),
+            operationType.getDescription()
+        );
+
         return new TransactionResponseDTO(
             id,
             accountId,
-            operationTypeId,
+            operationResponse,
             amount,
             eventDate
         );
