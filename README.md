@@ -19,6 +19,8 @@ O projeto segue **Arquitetura Hexagonal (Ports and Adapters)** com separação c
 - **Infrastructure**: Implementações técnicas (banco de dados, adapters, mappers)
 - **Presentation**: Controllers REST e DTOs
 
+![payway_arq.drawio.svg](docs/payway_arq.drawio.svg)
+ 
 ## Funcionalidades
 
 ### Contas
