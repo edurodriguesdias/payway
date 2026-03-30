@@ -17,6 +17,9 @@ public class AccountEntity {
     @Column(name = "document_number", nullable = false, unique = true)
     private String documentNumber;
 
+    protected AccountEntity() {
+    }
+
     public AccountEntity(String documentNumber) {
         this.documentNumber = documentNumber;
     }
