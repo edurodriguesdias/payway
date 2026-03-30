@@ -1,6 +1,7 @@
 package com.example.payway.transaction.presentation;
 
 import com.example.payway.transaction.domain.usecases.TransactionUseCase;
+import com.example.payway.transaction.domain.vo.OperationTypeEnum;
 import com.example.payway.transaction.domain.vo.TransactionInputVO;
 import com.example.payway.transaction.domain.vo.TransactionVO;
 import com.example.payway.transaction.presentation.dto.CreateTransactionRequestDTO;
@@ -58,7 +59,7 @@ class TransactionControllerTest {
         assertNotNull(response.getBody());
         assertEquals(1L, response.getBody().id());
         assertEquals(accountId, response.getBody().accountId());
-        assertEquals(operationTypeId, response.getBody().operationTypeId());
+        assertEquals(operationTypeId, response.getBody().operation().id());
         assertEquals(amount, response.getBody().amount());
         assertNotNull(response.getBody().eventDate());
 

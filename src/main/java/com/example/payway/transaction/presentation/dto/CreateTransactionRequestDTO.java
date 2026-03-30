@@ -1,5 +1,6 @@
 package com.example.payway.transaction.presentation.dto;
 
+import com.example.payway.transaction.domain.vo.OperationTypeEnum;
 import com.example.payway.transaction.domain.vo.TransactionInputVO;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotNull;
@@ -23,6 +24,8 @@ public record CreateTransactionRequestDTO(
     BigDecimal amount
 ) {
     public TransactionInputVO toVO() {
+        OperationTypeEnum.fromId(this.operationTypeId);
+
         return new TransactionInputVO(
             this.accountId,
             this.operationTypeId,
