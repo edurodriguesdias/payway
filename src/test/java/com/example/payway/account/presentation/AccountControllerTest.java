@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-
 class AccountControllerTest extends BaseIntegrationTest {
 
   @Autowired
@@ -34,6 +33,23 @@ class AccountControllerTest extends BaseIntegrationTest {
   }
 
   @Test
-  void getAccountByDocumentNumber() {
+  void shouldGetAccountByDocumentNumber() throws Exception {
+    var request = new CreateAccountRequestDTO("26781184016");
+    this.executePost("/accounts", request)
+      .andExpect(status().isOk());
+
+    this.executeGet("/accounts/26781184016")
+      .andExpect(status().isOk())
+      .andExpect(jsonPath("$.id").isNumber())
+      .andExpect(jsonPath("$.document_number").value("26781184016"));
+  }
+
+  @Test
+  void shouldReturnNotFoundWhenAccountDoesNotExist() throws Exception {
+    this.executeGet("/accounts/99999999999")
+      .andExpect(status().isNotFound())
+      .andExpect(jsonPath("$.message").value("Document number not found!"))
+      .andExpect(jsonPath("$.errors").isArray())
+      .andExpect(jsonPath("$.errors").isEmpty());
   }
 }

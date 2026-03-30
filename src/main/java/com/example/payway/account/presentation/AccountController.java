@@ -27,10 +27,10 @@ public class AccountController {
         var account = this.accountUseCase.createAccount(request.toVO());
 
         return ResponseEntity.ok(
-            AccountResponseDTO.build(
-                account.id(),
-                request.documentNumber()
-            )
+              AccountResponseDTO.build(
+                  account.id(),
+                  request.documentNumber()
+              )
         );
     }
 
