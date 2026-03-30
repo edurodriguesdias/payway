@@ -29,6 +29,11 @@ public abstract class BaseIntegrationTest {
       .content(toJson(requestBody)));
   }
 
+  protected ResultActions executeGet(String uri) throws Exception {
+    return mockMvc.perform(get(uri)
+      .contentType(MediaType.APPLICATION_JSON));
+  }
+
   protected String toJson(Object object) throws Exception {
     return objectMapper.writeValueAsString(object);
   }
