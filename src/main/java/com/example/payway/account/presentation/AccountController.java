@@ -24,7 +24,7 @@ public class AccountController {
         @Valid
         @RequestBody CreateAccountRequestDTO request
     ) {
-        var account = this.accountUseCase.createAccount(request.toVO());
+        var account = this.accountUseCase.createAccount(request.toDomain());
 
         return ResponseEntity.ok(
               AccountResponseDTO.build(

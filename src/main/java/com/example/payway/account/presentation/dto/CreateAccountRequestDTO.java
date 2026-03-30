@@ -11,7 +11,7 @@ public record CreateAccountRequestDTO(
     @DocumentValidation
     String documentNumber
 ) {
-        public AccountInputVO toVO() {
+        public AccountInputVO toDomain() {
             return new AccountInputVO(this.documentNumber);
         }
 }

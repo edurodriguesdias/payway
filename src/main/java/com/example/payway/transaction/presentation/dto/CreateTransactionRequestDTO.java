@@ -23,7 +23,7 @@ public record CreateTransactionRequestDTO(
     @Positive(message = "amount must be positive")
     BigDecimal amount
 ) {
-    public TransactionInputVO toVO() {
+    public TransactionInputVO toDomain() {
         OperationTypeEnum.fromId(this.operationTypeId);
 
         return new TransactionInputVO(

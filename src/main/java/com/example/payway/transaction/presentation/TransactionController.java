@@ -24,7 +24,7 @@ public class TransactionController {
         @Valid
         @RequestBody CreateTransactionRequestDTO request
     ) {
-        var transaction = transactionUseCase.createTransaction(request.toVO());
+        var transaction = transactionUseCase.createTransaction(request.toDomain());
 
         return ResponseEntity.ok(
             TransactionResponseDTO.build(
