@@ -25,6 +25,12 @@ public class AccountRepositoryAdapter implements AccountRepository {
     }
 
     @Override
+    public Optional<AccountVO> getById(Long id) {
+        return entityRepository.findById(id)
+                .map(AccountMapper::toDomain);
+    }
+
+    @Override
     public Optional<AccountVO> getByDocumentNumber(String documentNumber) {
         return entityRepository.getByDocumentNumber(documentNumber);
     }
