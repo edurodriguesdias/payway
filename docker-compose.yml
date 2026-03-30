@@ -4,11 +4,11 @@ services:
     container_name: payway-postgres
     platform: linux/amd64
     environment:
-      POSTGRES_USER: ${POSTGRES_USER:-postgres}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-password}
-      POSTGRES_DB: ${POSTGRES_DB:-transactionprimarydb}
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: transactionprimarydb
     ports:
-      - "${DB_PORT:-5436}:5432"
+      - "5436:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     networks:
