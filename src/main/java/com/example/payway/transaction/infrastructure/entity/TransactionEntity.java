@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 public class TransactionEntity {
 
     @Id
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -26,17 +27,26 @@ public class TransactionEntity {
     @Column(nullable = false, precision = 19, scale = 2)
     private BigDecimal amount;
 
+    @Column(name="balance", nullable = false, precision = 19, scale = 2)
+    private BigDecimal balance;
+
     @Column(name = "event_date", nullable = false)
     private LocalDateTime eventDate;
 
     protected TransactionEntity() {
     }
 
-    public TransactionEntity(Long accountId, Integer operationTypeId, BigDecimal amount) {
+    public TransactionEntity(
+        Long accountId,
+        Integer operationTypeId,
+        BigDecimal amount,
+        BigDecimal balance
+    ) {
         this.accountId = accountId;
         this.operationTypeId = operationTypeId;
         this.amount = amount;
         this.eventDate = LocalDateTime.now();
+        this.balance = balance;
     }
 
     public Long getId() {
@@ -69,6 +79,14 @@ public class TransactionEntity {
 
     public void setAmount(BigDecimal amount) {
         this.amount = amount;
+    }
+
+    public void setBalance(BigDecimal balance) {
+        this.balance = balance;
+    }
+
+    public BigDecimal getBalance() {
+        return balance;
     }
 
     public LocalDateTime getEventDate() {

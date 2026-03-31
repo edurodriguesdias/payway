@@ -8,6 +8,7 @@ public record TransactionVO(
     Long accountId,
     Integer operationTypeId,
     BigDecimal amount,
+    BigDecimal balance,
     LocalDateTime eventDate
 ) {
 }

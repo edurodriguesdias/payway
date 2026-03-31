@@ -7,6 +7,7 @@ import com.example.payway.transaction.infrastructure.mapper.TransactionMapper;
 import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Repository
 public class TransactionRepositoryAdapter implements TransactionRepository {
@@ -18,9 +19,27 @@ public class TransactionRepositoryAdapter implements TransactionRepository {
     }
 
     @Override
-    public TransactionVO create(Long accountId, Integer operationTypeId, BigDecimal amount) {
-        var transactionEntity = new TransactionEntity(accountId, operationTypeId, amount);
+    public TransactionVO create(
+        Long accountId,
+        Integer operationTypeId,
+        BigDecimal amount,
+        BigDecimal balance
+    ) {
+        var transactionEntity = new TransactionEntity(
+            accountId,
+          operationTypeId,
+          amount,
+          balance
+        );
         var savedEntity = entityRepository.save(transactionEntity);
         return TransactionMapper.toDomain(savedEntity);
+    }
+
+    public List<TransactionEntity> getOpenedTransactions(Long accountId) {
+        return entityRepository.findOpenedTransactions(accountId);
+    }
+
+    public void update(TransactionEntity transaction) {
+        entityRepository.save(transaction);
     }
 }

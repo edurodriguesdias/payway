@@ -25,6 +25,10 @@ public enum OperationTypeEnum {
       return description;
     }
 
+    public Boolean isDebit() {
+        return this != CREDIT_VOUCHER;
+    }
+
     public static OperationTypeEnum fromId(Integer id) {
         return Arrays.stream(values())
           .filter(type -> type.id.equals(id))

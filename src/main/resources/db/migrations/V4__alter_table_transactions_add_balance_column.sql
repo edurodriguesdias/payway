@@ -1,0 +1,1 @@
+ALTER TABLE transactions ADD COLUMN balance DECIMAL(19, 2) NOT NULL;

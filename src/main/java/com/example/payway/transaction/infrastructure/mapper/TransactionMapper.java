@@ -10,6 +10,7 @@ public class TransactionMapper {
             transactionEntity.getAccountId(),
             transactionEntity.getOperationTypeId(),
             transactionEntity.getAmount(),
+            transactionEntity.getBalance(),
             transactionEntity.getEventDate()
         );
     }
@@ -18,7 +19,8 @@ public class TransactionMapper {
         TransactionEntity transactionEntity = new TransactionEntity(
             transactionVO.accountId(),
             transactionVO.operationTypeId(),
-            transactionVO.amount()
+            transactionVO.amount(),
+            transactionVO.balance()
         );
         transactionEntity.setId(transactionVO.id());
         transactionEntity.setEventDate(transactionVO.eventDate());
